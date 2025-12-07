@@ -1,6 +1,7 @@
 export default defineAppConfig({
   firstName: "Adrian",
   lastName: "Somoza",
+  profil: "Digital Art Director",
 
   site: {
     name: "Adrian Somoza",
@@ -9,7 +10,7 @@ export default defineAppConfig({
 
   ui: {
     colors: {
-      primary: "blue",
+      primary: "green",
       neutral: "neutral",
     },
   },

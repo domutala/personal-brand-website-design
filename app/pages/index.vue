@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig();
+const showAbout = ref(false);
 </script>
 
 <template>
@@ -8,7 +9,7 @@ const appConfig = useAppConfig();
       <div
         class="u-header xl:w-[130px] xl:h-full h-[100px] w-full bg-default justify-center relative flex items-center xl:flex-col-reverse xl:py-5 px-5 xl:px-0"
       >
-        <div class="brand font-bold text-3xl leading-none w-min">
+        <div class="brand font-bold text-3xl leading-[0.85] w-min">
           <div>
             {{ appConfig.firstName }}
           </div>
@@ -19,31 +20,70 @@ const appConfig = useAppConfig();
 
         <div class="m-auto"></div>
 
-        <div class="font-bold underline">Menu</div>
+        <div class="font-bold underline cursor-pointer">Menu</div>
 
+        <u-switch v-model="showAbout" />
         <!-- <UColorModeSwitch /> -->
       </div>
     </div>
 
     <div>
       <div
-        class="xl:w-[calc(100vh-130px)] xl:h-full h-[502px] bg-black/7 dark:bg-white/5 flex flex-col justify-end"
+        class="transition-all xl:w-[calc(100vh-130px)] xl:h-full h-[502px] bg-black/7 dark:bg-white/5 flex flex-col justify-end relative"
+        :class="{
+          'xl:w-[442px]!': showAbout,
+        }"
       >
+        <div class="h-full relative transition-all hidden xl:block">
+          <!-- flex flex-col justify-end items-end pb-5 -->
+          <div
+            class="z-10 absolute transition-all"
+            :class="{
+              'right-0 bottom-5 translate-x-0': showAbout,
+              '-bottom-[300px] right-0 translate-x-[calc(100%-120px)]':
+                !showAbout,
+            }"
+          >
+            <div class="text-default font-black leading-[0.85] text-8xl">
+              <div>
+                {{ appConfig.firstName }}
+              </div>
+              <div class="flex items-end gap-2 relative">
+                {{ appConfig.lastName }}
+
+                <div
+                  class="text- text-xl mb-1 cursor-pointer absolute bottom-0 left-full whitespace-nowrap text-primary"
+                  variant="ghost"
+                  @click="showAbout = !showAbout"
+                >
+                  [
+                  <span class="text-default">
+                    {{ showAbout ? "ESC" : "+" }}
+                  </span>
+                  ]
+                  <!-- <u-icon name="i-lucide-plus" class="text-default" /> -->
+                </div>
+              </div>
+            </div>
+            <div class="font-black text-xl mt-1">
+              {{ appConfig.profil }}
+            </div>
+          </div>
+        </div>
+
         <img
           srcki="https://i.pinimg.com/1200x/91/82/b9/9182b99d9fd44c2694e907975db12de1.jpg"
           :src="'/images/001.png'"
           :alt="appConfig.site.name"
-          class="w-full max-h-[90%] object-cover object-top grayscale"
+          :class="{
+            'xl:h-4/6!': showAbout,
+          }"
+          class="w-full h-full transition-all max-h-[90%] object-cover object-top grayscale"
         />
       </div>
     </div>
 
-    <div>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni aspernatur
-      officia laboriosam necessitatibus nam accusamus, temporibus inventore!
-      Quaerat maiores reprehenderit facere a dolores magnam iure, possimus
-      accusantium ipsum tenetur praesentium?
-    </div>
+    <div></div>
   </div>
 </template>
 
