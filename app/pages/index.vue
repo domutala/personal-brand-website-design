@@ -41,7 +41,10 @@ const showAbout = ref(false);
                 !showAbout,
             }"
           >
-            <div class="text-default font-black leading-[0.85] text-8xl">
+            <div
+              class="text-default font-black leading-[0.85] text-8xl transition-all"
+              :class="{ 'text-8xl!': showAbout }"
+            >
               <div>
                 {{ appConfig.firstName }}
               </div>
