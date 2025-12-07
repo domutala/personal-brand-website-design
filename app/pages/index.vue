@@ -92,7 +92,7 @@ const showAbout = ref(false);
       :href="social"
       target="_blank"
     >
-      <u-icon :name="`i-simple-icons-${s}`" size="36" />
+      <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
     </a>
   </div>
 </template>

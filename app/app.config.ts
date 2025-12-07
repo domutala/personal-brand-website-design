@@ -4,12 +4,12 @@ export default defineAppConfig({
   profil: "Digital Art Director",
 
   socials: {
-    x: "https://x.com/domutala",
-    discord: "https://www.linkedin.com/in/domutala",
-    github: "https://github.com/domutala/personal-brand-website-design",
-    linkedin: "https://www.linkedin.com/in/domutala",
-    pinterest: "https://www.pinterest.com/pin/40602834137035879",
-    youtube: "https://www.youtube.com/@domutala",
+    "0.linkedin": "https://www.linkedin.com/in/domutala",
+    "1.github": "https://github.com/domutala/personal-brand-website-design",
+    "2.pinterest": "https://www.pinterest.com/pin/40602834137035879",
+    "3.x": "https://x.com/domutala",
+    "4.youtube": "https://www.youtube.com/@domutala",
+    "5.discord": "https://www.linkedin.com/in/domutala",
   },
 
   site: {
