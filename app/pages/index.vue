@@ -20,9 +20,7 @@ const showAbout = ref(false);
 
         <div class="m-auto"></div>
 
-        <div class="font-bold underline cursor-pointer">Menu</div>
-
-        <!-- <UColorModeSwitch /> -->
+        <div class="font-bold underline cursor-pointer text-lg">Menu</div>
       </div>
     </div>
 
@@ -94,6 +92,11 @@ const showAbout = ref(false);
     >
       <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
     </a>
+  </div>
+
+  <div class="fixed top-[30px] right-[50px] z-20">
+    <UColorModeSelect class="rounded-full" />
+    <!-- <UColorModeButton /> -->
   </div>
 </template>
 
