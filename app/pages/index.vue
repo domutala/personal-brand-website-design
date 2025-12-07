@@ -83,7 +83,16 @@ const showAbout = ref(false);
       </div>
     </div>
 
-    <div></div>
+    <div class="w-full">
+      <div class="w-full max-w-2xl mx-auto pt-[350px]">
+        <u-container class="py-32">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur iste
+          fugit laudantium, non provident modi dolores numquam consequuntur in
+          nulla mollitia quibusdam nemo officiis dolor culpa velit aliquid
+          accusantium odit.
+        </u-container>
+      </div>
+    </div>
   </div>
 
   <div class="fixed bottom-[50px] right-[50px] flex flex-col gap-7">
@@ -95,11 +104,6 @@ const showAbout = ref(false);
     >
       <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
     </a>
-  </div>
-
-  <div class="fixed top-[30px] right-[50px] z-20">
-    <UColorModeSelect class="rounded-full" />
-    <!-- <UColorModeButton /> -->
   </div>
 </template>
 

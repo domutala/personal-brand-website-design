@@ -1,4 +1,7 @@
-<script setup>
+<script lang="ts" setup>
+import { en, fr } from "@nuxt/ui/locale";
+const { locale, setLocale } = useI18n();
+
 useHead({
   meta: [{ name: "viewport", content: "width=device-width, initial-scale=1" }],
   link: [{ rel: "icon", href: "/favicon.ico" }],
@@ -8,7 +11,6 @@ useHead({
 });
 
 const appConfig = useAppConfig();
-
 const title = appConfig.site.name;
 const description = appConfig.site.description;
 
@@ -19,12 +21,26 @@ useSeoMeta({
   ogDescription: description,
   ogImage: "https://ui.nuxt.com/assets/templates/nuxt/starter-light.png",
 });
+
+onMounted(() => {
+  useCookieConsent().init();
+});
 </script>
 
 <template>
   <UApp>
     <UMain>
       <NuxtPage />
+
+      <div class="fixed top-[30px] right-[50px] z-20 flex flex-col gap-2">
+        <UColorModeSelect />
+
+        <ULocaleSelect
+          :model-value="locale"
+          :locales="[en, fr]"
+          @update:model-value="setLocale($event as 'fr')"
+        />
+      </div>
     </UMain>
   </UApp>
 </template>
