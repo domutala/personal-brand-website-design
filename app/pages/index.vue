@@ -22,7 +22,6 @@ const showAbout = ref(false);
 
         <div class="font-bold underline cursor-pointer">Menu</div>
 
-        <u-switch v-model="showAbout" />
         <!-- <UColorModeSwitch /> -->
       </div>
     </div>
@@ -84,6 +83,17 @@ const showAbout = ref(false);
     </div>
 
     <div></div>
+  </div>
+
+  <div class="fixed bottom-[50px] right-[50px] flex flex-col gap-7">
+    <a
+      v-for="(social, s) in appConfig.socials"
+      :key="s"
+      :href="social"
+      target="_blank"
+    >
+      <u-icon :name="`i-simple-icons-${s}`" size="36" />
+    </a>
   </div>
 </template>
 
