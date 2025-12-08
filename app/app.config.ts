@@ -1,6 +1,6 @@
 export default defineAppConfig({
-  firstName: "Adrian",
-  lastName: "Somoza",
+  firstName: "Mamadou",
+  lastName: "Dia",
   profil: "Digital Art Director",
 
   socials: {
