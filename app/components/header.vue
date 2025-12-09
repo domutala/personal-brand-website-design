@@ -46,12 +46,12 @@ const { data: stacks, pending } = await useAsyncData(
 
 const items = ref<NavigationMenuItem[][]>([
   [
-    {
-      label: "Mamadou",
-      icon: "i-lucide-home",
-      active: false,
-      to: "/",
-    },
+    // {
+    //   label: "Mamadou",
+    //   icon: "i-lucide-home",
+    //   active: false,
+    //   to: "/",
+    // },
     {
       label: "Stacks",
       icon: "i-lucide-screen-share",
@@ -107,11 +107,19 @@ const items = ref<NavigationMenuItem[][]>([
 </script>
 
 <template>
-  <UHeader class="fixed w-full bg-transparent border-b-0" mode="slideover">
+  <UHeader
+    class="fixed w-full bg-transparent border-b-0"
+    mode="slideover"
+    :ui="{ container: 'max-w-full!' }"
+  >
     <template #title>
-      <div class="lg:hidden flex items-center gap-2">
-        <u-icon name="i-lucide-home" />
-        Mamadou
+      <div class="flex items-center gap-2">
+        <img
+          :src="'/images/004.png'"
+          class="size-8 object-cover object-top rounded-full mb-auto ml-auto bg-black/10 dark:bg-white/10"
+        />
+
+        <div class="lg:hidden">Mamadou</div>
       </div>
     </template>
 

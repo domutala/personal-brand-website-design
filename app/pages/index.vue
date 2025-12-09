@@ -49,7 +49,7 @@ const { data: stacks } = await useAsyncData(
 
 <template>
   <div
-    class="hidden items-end justify-center relative bg-black/10 dark:bg-white/5 h-[400px] md:h-[520px]"
+    class="flex md:hidden items-end justify-center relative bg-black/10 dark:bg-white/5 h-[400px] md:h-[520px]"
   >
     <img
       :src="'/images/003.png'"
@@ -73,13 +73,13 @@ const { data: stacks } = await useAsyncData(
   </div>
 
   <div
-    class="hidden md:flex flex-col items-center justify-center relative bg-black/10"
+    class="hidden md:flex flex-col items-center justify-center relative bg-black/8"
   >
-    <!-- <img
+    <img
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
       class="w-auto h-full transition-all max-h-[80%] object-cover object-top absolute bottom-0"
-    /> -->
+    />
 
     <u-page-grid
       class="relative max-w-[1900px] md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 min-h-screen w-full mx-auto"
@@ -108,13 +108,13 @@ const { data: stacks } = await useAsyncData(
       </div>
 
       <div class="flex flex-col items-end">
-        <img
+        <!-- <img
           :src="'/images/004.png'"
           :alt="appConfig.site.name"
           class="size-18 object-cover object-top rounded-full mt-32 mb-auto ml-auto bg-black/10 dark:bg-white/10 mx-20"
-        />
+        /> -->
 
-        <div class="mb-16 px-5 sm:px-16">
+        <div class="mb-16 px-5 sm:px-16 mt-auto">
           <UPageGrid
             v-if="stacks"
             class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-2"
@@ -146,17 +146,17 @@ const { data: stacks } = await useAsyncData(
   </div>
 
   <u-container class="py-5">
-    <img
+    <!-- <img
       :src="'/images/004.png'"
       :alt="appConfig.site.name"
-      class="size-12 object-cover object-top rounded-full mt-16 mb-5 bg-black/10 dark:bg-white/10"
-    />
+      class="size-12 object-cover object-top rounded-full mt-16 mb-5 bg-black/10 dark:bg-white/10 block sm:hidden"
+    /> -->
 
-    <h1 class="text-3xl font-bold font-geist-mono block sm:hidden">
+    <h1 class="text-3xl font-bold font-geist-mono block md:hidden">
       {{ $t("page.index.title") }}
     </h1>
 
-    <div class="mt-5 block sm:hidden">
+    <div class="mt-5 block md:hidden">
       <u-page-grid class="gap-2 grid-cols-2">
         <UPageCard
           v-for="link in stacks"

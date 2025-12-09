@@ -71,7 +71,7 @@ const stack = computed(() => {
     class="pb-16 pt-0 xl:max-w-[1150px] font-geist-mono mx-auto"
   >
     <div
-      class="py-10 px-5 xl:mt-16 pt-16 xl:pt-10 light:bg-black/5 dark:bg-white/5"
+      class="py-10 px-5 xl:mt-32 pt-16 xl:pt-10 light:bg-black/3 dark:bg-white/3"
     >
       <template v-if="stack">
         <div class="mb-5">
