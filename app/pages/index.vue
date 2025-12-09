@@ -48,14 +48,14 @@ const { data: stacks } = await useAsyncData(
     <img
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
-      class="w-auto h-full transition-all max-h-[90%] object-cover object-top absolute bottom-0"
+      class="w-auto h-full transition-all max-h-[80%] object-cover object-top absolute bottom-0 grayscale"
     />
 
     <u-page-grid
       class="relative max-w-[1900px] md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 min-h-screen w-full mx-auto"
     >
       <div>
-        <div class="mt-10 sm:mt-32 px-5 sm:px-16 mr-0 sm:mr-16">
+        <div class="mt-16 sm:mt-32 px-5 sm:px-16 mr-0 sm:mr-16">
           <h1 class="text-xl sm:text-4xl lg:text-5xl font-bold font-geist-mono">
             {{ $t("page.index.title") }}
           </h1>
@@ -69,7 +69,7 @@ const { data: stacks } = await useAsyncData(
               :key="s"
               :href="social"
               target="_blank"
-              class="bg-black/20 dark:bg-white/10 text-black dark:text-white size-12 flex items-center justify-center backdrop-blur-sm"
+              class="bg-black/10 dark:bg-white/10 text-black dark:text-white size-12 flex items-center justify-center backdrop-blur-sm"
             >
               <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
             </a>
@@ -93,7 +93,7 @@ const { data: stacks } = await useAsyncData(
               v-bind="link"
               spotlight
               spotlight-color="neutral"
-              class="rounded-none!"
+              class="rounded-none backdrop-blur-sm"
             >
               <template #header>
                 <div class="absolute top-5 right-5">
@@ -103,18 +103,6 @@ const { data: stacks } = await useAsyncData(
             </UPageCard>
           </UPageGrid>
         </div>
-
-        <!-- <UCarousel
-          v-slot="{ item }"
-          :items="items"
-          :ui="{
-            item: 'basis-[234]',
-            dot: 'w-6 h-1',
-          }"
-          dots
-        >
-          <img :src="item" width="234" height="234" class="rounded-0" />
-        </UCarousel> -->
       </div>
     </u-page-grid>
   </div>
