@@ -44,7 +44,31 @@ const { data: stacks } = await useAsyncData(
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center relative bg-black/10">
+  <div
+    class="md:hidden flex items-end justify-center relative bg-black/10 h-[350px] md:h-[520px]"
+  >
+    <img
+      :src="'/images/003.png'"
+      :alt="appConfig.site.name"
+      class="w-full h-full transition-all max-h-[85%] object-cover object-top absolute bottom-0 grayscale"
+    />
+
+    <div class="flex items-center gap-2 p-5">
+      <a
+        v-for="(social, s) in appConfig.socials"
+        :key="s"
+        :href="social"
+        target="_blank"
+        class="bg-black/10 dark:bg-white/10 text-black dark:text-white size-12 flex items-center justify-center backdrop-blur-sm"
+      >
+        <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="hidden md:flex flex-col items-center justify-center relative bg-black/10"
+  >
     <img
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
@@ -59,7 +83,7 @@ const { data: stacks } = await useAsyncData(
           <h1 class="text-xl sm:text-4xl lg:text-5xl font-bold font-geist-mono">
             {{ $t("page.index.title") }}
           </h1>
-          <p class="mt-5 font-geist-mono text-[18px] hidden lg:block">
+          <p class="mt-5 font-geist-mono text-[18px] hidden xl:block">
             {{ $t("page.index.description") }}
           </p>
 
@@ -108,7 +132,13 @@ const { data: stacks } = await useAsyncData(
   </div>
 
   <u-container class="py-5">
-    <p class="mt-5 font-geist-mono text-[18px] block lg:hidden">
+    <h1
+      class="text-xl sm:text-4xl lg:text-5xl font-bold font-geist-mono block sm:hidden"
+    >
+      {{ $t("page.index.title") }}
+    </h1>
+
+    <p class="mt-5 font-geist-mono text-[18px] block xl:hidden">
       {{ $t("page.index.description") }}
     </p>
   </u-container>

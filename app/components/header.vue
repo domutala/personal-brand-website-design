@@ -107,7 +107,7 @@ const items = ref<NavigationMenuItem[][]>([
 </script>
 
 <template>
-  <UHeader class="fixed w-full bg-transparent border-b-0" mode="drawer">
+  <UHeader class="fixed w-full bg-transparent border-b-0" mode="slideover">
     <template #title>
       <div class="lg:hidden">Mamadou</div>
     </template>
