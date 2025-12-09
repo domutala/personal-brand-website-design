@@ -107,7 +107,13 @@ const { data: stacks } = await useAsyncData(
         </div>
       </div>
 
-      <div class="flex items-end">
+      <div class="flex flex-col items-end">
+        <img
+          :src="'/images/004.png'"
+          :alt="appConfig.site.name"
+          class="size-18 object-cover object-top rounded-full mt-32 mb-auto ml-auto bg-black/10 dark:bg-white/10 mx-20"
+        />
+
         <div class="mb-16 px-5 sm:px-16">
           <UPageGrid
             v-if="stacks"
@@ -140,7 +146,13 @@ const { data: stacks } = await useAsyncData(
   </div>
 
   <u-container class="py-5">
-    <h1 class="text-3xl font-bold font-geist-mono block sm:hidden mt-16">
+    <img
+      :src="'/images/004.png'"
+      :alt="appConfig.site.name"
+      class="size-12 object-cover object-top rounded-full mt-16 mb-5 bg-black/10 dark:bg-white/10"
+    />
+
+    <h1 class="text-3xl font-bold font-geist-mono block sm:hidden">
       {{ $t("page.index.title") }}
     </h1>
 
