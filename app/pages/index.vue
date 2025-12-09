@@ -63,7 +63,7 @@ const { data: stacks } = await useAsyncData(
             {{ $t("page.index.description") }}
           </p>
 
-          <div class="flex items-center gap-2 mt-7">
+          <div class="flex items-center gap-2 mt-2">
             <a
               v-for="(social, s) in appConfig.socials"
               :key="s"
