@@ -54,7 +54,7 @@ const { data: stacks } = await useAsyncData(
     <img
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
-      class="w-full h-full transition-all max-h-[85%] object-cover object-top absolute bottom-0 grayscale"
+      class="w-full h-full transition-all max-h-[85%] object-cover object-top absolute bottom-0"
     />
 
     <div
@@ -78,7 +78,7 @@ const { data: stacks } = await useAsyncData(
     <img
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
-      class="w-auto h-full transition-all max-h-[80%] object-cover object-top absolute bottom-0 grayscale"
+      class="w-auto h-full transition-all max-h-[80%] object-cover object-top absolute bottom-0"
     />
 
     <u-page-grid
