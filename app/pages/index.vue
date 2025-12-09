@@ -57,13 +57,15 @@ const { data: stacks } = await useAsyncData(
       class="w-full h-full transition-all max-h-[85%] object-cover object-top absolute bottom-0 grayscale"
     />
 
-    <div class="flex items-center gap-2 p-5">
+    <div
+      class="flex items-center justify-center gap-2 backdrop-blur-sm w-full bg-black/10 dark:bg-white/10"
+    >
       <a
         v-for="(social, s) in appConfig.socials"
         :key="s"
         :href="social"
         target="_blank"
-        class="bg-black/10 dark:bg-white/10 text-black dark:text-white size-12 flex items-center justify-center backdrop-blur-sm"
+        class="text-black dark:text-white size-12 flex items-center justify-center"
       >
         <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
       </a>
