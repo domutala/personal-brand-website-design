@@ -70,7 +70,9 @@ const stack = computed(() => {
     v-else-if="page?.content"
     class="pb-16 pt-0 xl:max-w-[1150px] font-geist-mono mx-auto"
   >
-    <div class="p-10 xl:mt-16 pt-16 xl:pt-10 light:bg-black/5 dark:bg-white/5">
+    <div
+      class="py-10 px-5 xl:mt-16 pt-16 xl:pt-10 light:bg-black/5 dark:bg-white/5"
+    >
       <template v-if="stack">
         <div class="mb-5">
           <div class="flex items-center gap-3 mb-2">
@@ -107,28 +109,29 @@ const stack = computed(() => {
       </div>
     </div>
 
-    <div class="p-8 mb-8 font-geist-mono text-[16px]">
-      <ContentRenderer :value="page.content" />
-    </div>
+    <div class="p-5 mb-8">
+      <ContentRenderer :value="page.content" class="text-[16px]" />
 
-    <div class="px-8">
-      <UPageGrid class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-4">
-        <UPageCard
-          v-for="link in page.links"
-          :key="link.to"
-          :ui="{ leadingIcon: 'size-16 text-neutral', title: 'mt-5 text-xl' }"
-          v-bind="link"
-          spotlight
-          spotlight-color="neutral"
-          class="rounded-none!"
+      <div class="mt-16">
+        <UPageGrid
+          class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-4"
         >
-          <template #header>
-            <div class="absolute top-5 right-5">
-              <u-icon name="i-lucide-arrow-up-right" />
-            </div>
-          </template>
-        </UPageCard>
-      </UPageGrid>
+          <UPageCard
+            v-for="link in page.links"
+            :key="link.to"
+            :ui="{ leadingIcon: 'size-16 text-neutral', title: 'mt-5 text-xl' }"
+            v-bind="link"
+            class="rounded-none!"
+            variant="soft"
+          >
+            <template #header>
+              <div class="absolute top-5 right-5">
+                <u-icon name="i-lucide-arrow-up-right" />
+              </div>
+            </template>
+          </UPageCard>
+        </UPageGrid>
+      </div>
     </div>
   </div>
 </template>
