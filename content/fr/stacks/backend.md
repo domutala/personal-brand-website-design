@@ -1,7 +1,9 @@
 ---
+slug: backend
 title: Je crée des APIs de Nouvelle Génération avec NestJS
 mainStack: nestjs
 subStacks: [typescript, typeorm, drizzle, redis, adonisjs, ,koa, express]
+links: [frontend, devops, cicd-and-tests]
 ---
 
 **NestJS est mon moteur pour des backends puissants et fiables.**  Grâce à sa structure modulaire et à ses conventions intelligentes, je peux construire des API rapides, sécurisées et faciles à maintenir.  

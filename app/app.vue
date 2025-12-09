@@ -29,10 +29,10 @@ onMounted(() => {
 
 <template>
   <UApp>
-    <UMain>
-      <NuxtPage />
+    <u-header class="border-b-0">
+      <template #title> @domutala </template>
 
-      <div class="fixed top-[30px] right-[50px] z-20 flex flex-col gap-2">
+      <template #right>
         <UColorModeSelect />
 
         <ULocaleSelect
@@ -40,7 +40,13 @@ onMounted(() => {
           :locales="[en, fr]"
           @update:model-value="setLocale($event as 'fr')"
         />
-      </div>
+      </template>
+    </u-header>
+
+    <UMain>
+      <NuxtPage />
     </UMain>
+
+    <ui-footer />
   </UApp>
 </template>

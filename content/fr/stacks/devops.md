@@ -1,6 +1,10 @@
 ---
+slug: devops
 title: Optimiser le déploiement et la performance avec DevOps et Cloud
-subStacks: [netlify, cleverCloud, cloudflare, firebase, docker, googleCloud, ovh, linux, jenkins]
+icon: i-lucide-cloud-check
+subStacks: [linux, cloudflare, firebase, netlify, docker, googleCloud, ovh, jenkins, cleverCloud]
+
+links: [frontend, backend, cicd-and-tests]
 ---
 
 

@@ -10,5 +10,57 @@
     "index": {
       "title": "Hello, I am /br Mamadou"
     }
+  },
+
+  "discuss": {
+    "cta": "On en discute !",
+    "subjects": [
+      {
+        "title": "Ton code du lundi mérite-t-il vraiment d’être relu le mardi ? 😅👀",
+        "img": "/images/vice-versa.png"
+      },
+
+      {
+        "title": "On bannit enfin le “ça dépend”… ou ça dépend ? 😭🤷🏾‍♂️"
+      },
+
+      {
+        "title": "Sheldon & Amy méritent-ils vraiment le Nobel… ou Leonard mérite juste un Nobel de survie ? 😂"
+      },
+
+      {
+        "title": "Pourquoi les product managers disent toujours “c’est juste un petit changement” ? 😭🔥"
+      },
+
+      {
+        "title": "Quel pays va devenir la Silicon Valley africaine… et pourquoi c’est pas le tien ? 😅🔥"
+      },
+
+      {
+        "title": "Le bug le plus bête que t’as résolu en 4h… pour découvrir que c’était une virgule ? 😭💀"
+      },
+
+      {
+        "title": "Si tu pouvais télécharger une compétence comme dans Matrix, tu prends quoi en premier ? ⚡"
+      },
+
+      {
+        "title": "Jeux vidéo vs Mozart : qui te donne vraiment +10 d’intelligence ? 🎮🎼",
+        "img": "/images/mozart.png"
+      },
+      {
+        "title": "Défi : écris une phrase sans le ‘U’… si ton cerveau ne crash pas avant 😭🔥"
+      },
+      {
+        "title": "L’IA va-t-elle prendre nos jobs… ou juste nous voler nos pauses café ? 🤖☕"
+      },
+      {
+        "title": "Frontend vs Backend : qui souffre le plus… et pourquoi c’est tout le monde ? 😭🔥"
+      },
+
+      {
+        "title": "Si JavaScript était une personne, tu sortirais avec ou tu ghost direct ? 😂"
+      }
+    ]
   }
 }
