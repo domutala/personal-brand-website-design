@@ -33,6 +33,7 @@ const { data: stacks } = await useAsyncData(
           return {
             title: link.title,
             icon,
+            slug: link.meta.slug as string,
             to: localePath({
               name: "stack-slug",
               params: { slug: link.meta.slug },
@@ -48,7 +49,7 @@ const { data: stacks } = await useAsyncData(
 
 <template>
   <div
-    class="md:hidden flex items-end justify-center relative bg-black/10 h-[350px] md:h-[520px]"
+    class="md:hidden flex items-end justify-center relative bg-black/10 dark:bg-white/5 h-[400px] md:h-[520px]"
   >
     <img
       :src="'/images/003.png'"
@@ -111,7 +112,7 @@ const { data: stacks } = await useAsyncData(
             class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-2"
           >
             <UPageCard
-              v-for="link in stacks.slice(0, 1)"
+              v-for="link in stacks.filter((s) => s.slug === 'frontend')"
               :key="link.to"
               :ui="{
                 leadingIcon: 'size-16 text-neutral',
@@ -145,15 +146,16 @@ const { data: stacks } = await useAsyncData(
       {{ $t("page.index.description") }}
     </p>
 
-    <div class="mt-10">
-      <u-page-grid class="gap-2">
+    <div class="mt-10 block sm:hidden">
+      <u-page-grid class="gap-2 grid-cols-2">
         <UPageCard
-          v-for="link in stacks?.slice(0)"
+          v-for="link in stacks"
           :key="link.to"
           :ui="{
-            leadingIcon: 'size-16 text-neutral',
-            title: 'mt-5 text-xl',
+            leadingIcon: 'size-7 text-neutral',
+            title: 'text-',
           }"
+          orientation="horizontal"
           v-bind="link"
           class="rounded-none backdrop-blur-sm"
         >

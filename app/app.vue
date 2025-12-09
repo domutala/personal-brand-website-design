@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <NuxtLoadingIndicator :height="7" />
+  <NuxtLoadingIndicator :height="5" color="#000" />
   <UApp>
     <!-- <u-header
       v-if="$route.path !== '/'"

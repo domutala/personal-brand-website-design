@@ -109,7 +109,10 @@ const items = ref<NavigationMenuItem[][]>([
 <template>
   <UHeader class="fixed w-full bg-transparent border-b-0" mode="slideover">
     <template #title>
-      <div class="lg:hidden">Mamadou</div>
+      <div class="lg:hidden flex items-center gap-2">
+        <u-icon name="i-lucide-home" />
+        Mamadou
+      </div>
     </template>
 
     <UNavigationMenu :items="items" />
