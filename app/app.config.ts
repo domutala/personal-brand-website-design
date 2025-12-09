@@ -5,7 +5,7 @@ export default defineAppConfig({
 
   socials: {
     "0.linkedin": "https://www.linkedin.com/in/domutala",
-    "1.github": "https://github.com/domutala/personal-brand-website-design",
+    "1.github": "https://github.com/domutala",
     "2.whatsapp": "https://wa.me/+221764037313",
     "3.x": "https://x.com/domutala",
   },

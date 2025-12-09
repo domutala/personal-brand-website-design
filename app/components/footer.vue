@@ -26,6 +26,8 @@ const appConfig = useAppConfig();
   <UFooter>
     <template #left>
       <p class="text-muted text-sm">© {{ new Date().getFullYear() }}</p>
+
+      <UColorModeSelect />
     </template>
 
     <UNavigationMenu :items="items" variant="link" />

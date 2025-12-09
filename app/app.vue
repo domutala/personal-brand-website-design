@@ -29,7 +29,10 @@ onMounted(() => {
 
 <template>
   <UApp>
-    <u-header class="border-b-0">
+    <!-- <u-header
+      class="border-b-0"
+      :class="{ 'bg-transparent': $route.path === '/' }"
+    >
       <template #title> @domutala </template>
 
       <template #right>
@@ -41,7 +44,7 @@ onMounted(() => {
           @update:model-value="setLocale($event as 'fr')"
         />
       </template>
-    </u-header>
+    </u-header> -->
 
     <UMain>
       <NuxtPage />
