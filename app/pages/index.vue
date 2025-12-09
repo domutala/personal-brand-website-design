@@ -1,16 +1,5 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig();
-const showAbout = ref(false);
-
-const items = [
-  "https://picsum.photos/468/468?random=1",
-  "https://picsum.photos/468/468?random=2",
-  "https://picsum.photos/468/468?random=3",
-  "https://picsum.photos/468/468?random=4",
-  "https://picsum.photos/468/468?random=5",
-  "https://picsum.photos/468/468?random=6",
-];
-
 const localePath = useLocalePath();
 const { data: links, pending } = await useAsyncData(
   () => {
@@ -51,7 +40,6 @@ const { data: links, pending } = await useAsyncData(
     class="min-h-screen flex flex-col items-center justify-center relative bg-black/10"
   >
     <img
-      srcki="https://i.pinimg.com/1200x/91/82/b9/9182b99d9fd44c2694e907975db12de1.jpg"
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
       class="w-auto h-full transition-all max-h-[90%] object-cover object-top absolute bottom-0"

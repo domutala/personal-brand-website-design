@@ -28,8 +28,10 @@ onMounted(() => {
 </script>
 
 <template>
+  <NuxtLoadingIndicator />
   <UApp>
     <!-- <u-header
+      v-if="$route.path !== '/'"
       class="border-b-0"
       :class="{ 'bg-transparent': $route.path === '/' }"
     >
@@ -47,6 +49,7 @@ onMounted(() => {
     </u-header> -->
 
     <UMain>
+      <ui-menu />
       <NuxtPage />
     </UMain>
 
