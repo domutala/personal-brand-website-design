@@ -1,121 +1,98 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
-const appConfig = useAppConfig();
+const localePath = useLocalePath();
+const { locale } = useI18n();
+
+const { data: stacks, pending } = await useAsyncData(
+  () => {
+    return queryCollection("content")
+      .where(
+        "path",
+        "IN",
+        ["frontend", "backend", "devops", "cicd-and-tests"].map(
+          (slug) => `/${locale.value}/stacks/${slug}`,
+        ),
+      )
+      .all();
+  },
+  {
+    async transform(content) {
+      // let links: { title: string; icon?: string; to: string }[] = [];
+
+      const links =
+        content.map((link) => {
+          let icon: string | undefined;
+
+          if (link.meta.mainStack) {
+            icon = Stacks[link.meta.mainStack as "vue"]?.icon;
+          } else if (link.meta.icon) {
+            icon = link.meta.icon as string;
+          }
+
+          return {
+            label: link.title,
+            icon,
+            to: localePath({
+              name: "stack-slug",
+              params: { slug: link.meta.slug },
+            }),
+          };
+        }) || [];
+
+      return links;
+    },
+  },
+);
+
 const items = ref<NavigationMenuItem[][]>([
   [
     {
-      label: "Home",
+      label: "Mamadou",
       icon: "i-lucide-home",
+      active: false,
       to: "/",
     },
     {
-      label: "Guide",
-      icon: "i-lucide-book-open",
-      children: [
-        {
-          label: "Introduction",
-          description: "Fully styled and customizable components for Nuxt.",
-          icon: "i-lucide-house",
-        },
-        {
-          label: "Installation",
-          description:
-            "Learn how to install and configure Nuxt UI in your application.",
-          icon: "i-lucide-cloud-download",
-        },
-        {
-          label: "Icons",
-          icon: "i-lucide-smile",
-          description:
-            "You have nothing to do, @nuxt/icon will handle it automatically.",
-        },
-        {
-          label: "Colors",
-          icon: "i-lucide-swatch-book",
-          description:
-            "Choose a primary and a neutral color from your Tailwind CSS theme.",
-        },
-        {
-          label: "Theme",
-          icon: "i-lucide-cog",
-          description:
-            "You can customize components by using the `class` / `ui` props or in your app.config.ts.",
-        },
-      ],
-    },
-    {
-      label: "Composables",
-      icon: "i-lucide-database",
-      children: [
-        {
-          label: "defineShortcuts",
-          icon: "i-lucide-file-text",
-          description: "Define shortcuts for your application.",
-          to: "/docs/composables/define-shortcuts",
-        },
-        {
-          label: "useOverlay",
-          icon: "i-lucide-file-text",
-          description: "Display a modal/slideover within your application.",
-          to: "/docs/composables/use-overlay",
-        },
-        {
-          label: "useToast",
-          icon: "i-lucide-file-text",
-          description: "Display a toast within your application.",
-          to: "/docs/composables/use-toast",
-        },
-      ],
-    },
-    {
-      label: "Components",
-      icon: "i-lucide-box",
-      to: "/docs/components",
-      children: [
-        {
-          label: "Link",
-          icon: "i-lucide-file-text",
-          description: "Use NuxtLink with superpowers.",
-          to: "/docs/components/link",
-        },
-        {
-          label: "Modal",
-          icon: "i-lucide-file-text",
-          description: "Display a modal within your application.",
-          to: "/docs/components/modal",
-        },
-        {
-          label: "NavigationMenu",
-          icon: "i-lucide-file-text",
-          description: "Display a list of links.",
-          to: "/docs/components/navigation-menu",
-        },
-        {
-          label: "Pagination",
-          icon: "i-lucide-file-text",
-          description: "Display a list of pages.",
-          to: "/docs/components/pagination",
-        },
-        {
-          label: "Popover",
-          icon: "i-lucide-file-text",
-          description:
-            "Display a non-modal dialog that floats around a trigger element.",
-          to: "/docs/components/popover",
-        },
-        {
-          label: "Progress",
-          icon: "i-lucide-file-text",
-          description: "Show a horizontal bar to indicate task progression.",
-          to: "/docs/components/progress",
-        },
-      ],
+      label: "Stacks",
+      icon: "i-lucide-screen-share",
+      children: [...(stacks.value || [])],
     },
 
     {
-      label: "Home",
+      label: "Blog",
+      icon: "i-lucide-book-open",
+    },
+
+    // {
+    //   label: "Composables",
+    //   icon: "i-lucide-database",
+    //   children: [
+    //     {
+    //       label: "defineShortcuts",
+    //       icon: "i-lucide-file-text",
+    //       description: "Define shortcuts for your application.",
+    //       to: "/docs/composables/define-shortcuts",
+    //     },
+    //     {
+    //       label: "useOverlay",
+    //       icon: "i-lucide-file-text",
+    //       description: "Display a modal/slideover within your application.",
+    //       to: "/docs/composables/use-overlay",
+    //     },
+    //     {
+    //       label: "useToast",
+    //       icon: "i-lucide-file-text",
+    //       description: "Display a toast within your application.",
+    //       to: "/docs/composables/use-toast",
+    //     },
+    //   ],
+    // },
+
+    {
+      label: "Discutons",
       icon: "i-lucide-message-square-text",
       to: "/discuss",
+      active: false,
     },
   ],
   // [
@@ -130,12 +107,16 @@ const items = ref<NavigationMenuItem[][]>([
 </script>
 
 <template>
-  <div class="fixed z-500 right-[20px] sm:right-[50px] top-16">
+  <!-- right-5 sm:right-[50px] -->
+  <div
+    class="fixed z-500 w-full top-0 left-[50%] translate-x-[-50%] backdrop-blur-sm flex justify-center"
+  >
     <UNavigationMenu
       collapsed
       tooltip
       popover
-      orientation="vertical"
+      orientation="horizontal"
+      class="px-3 mx-autp"
       :items="items"
     />
   </div>

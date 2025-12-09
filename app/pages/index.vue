@@ -1,9 +1,17 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig();
 const localePath = useLocalePath();
-const { data: links, pending } = await useAsyncData(
+const { locale } = useI18n();
+
+const { data: stacks } = await useAsyncData(
   () => {
-    return queryCollection("content").all();
+    return queryCollection("content")
+      .where(
+        "path",
+        "IN",
+        ["frontend"].map((slug) => `/${locale.value}/stacks/${slug}`),
+      )
+      .all();
   },
   {
     async transform(content) {
@@ -36,9 +44,7 @@ const { data: links, pending } = await useAsyncData(
 </script>
 
 <template>
-  <div
-    class="min-h-screen flex flex-col items-center justify-center relative bg-black/10"
-  >
+  <div class="flex flex-col items-center justify-center relative bg-black/10">
     <img
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
@@ -46,19 +52,15 @@ const { data: links, pending } = await useAsyncData(
     />
 
     <u-page-grid
-      class="relative max-w-[1900px] md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 min-h-screen w-full"
+      class="relative max-w-[1900px] md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 min-h-screen w-full mx-auto"
     >
       <div>
-        <div class="mt-16 px-16">
-          <!-- v-html="$t('page.index.title').replaceAll('/br', '<br />')" -->
-          <h1 class="text-4xl font-bold font-geist-mono">
-            Hello, I'm Senior Frontend Developer - Vue.js/Nuxt.js Specialist
+        <div class="mt-10 sm:mt-32 px-5 sm:px-16 mr-0 sm:mr-16">
+          <h1 class="text-xl sm:text-4xl lg:text-5xl font-bold font-geist-mono">
+            {{ $t("page.index.title") }}
           </h1>
-          <p class="mt-5 font-geist-mono text-[18px]">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-            voluptas inventore dicta error, ducimus neque porro. Ipsum, quo esse
-            nostrum vel voluptatum repudiandae! Repellendus recusandae
-            aspernatur eligendi vero labore velit.
+          <p class="mt-5 font-geist-mono text-[18px] hidden lg:block">
+            {{ $t("page.index.description") }}
           </p>
 
           <div class="flex items-center gap-2 mt-7">
@@ -67,7 +69,7 @@ const { data: links, pending } = await useAsyncData(
               :key="s"
               :href="social"
               target="_blank"
-              class="bg-black/10 dark:bg-white/10 size-12 flex items-center justify-center"
+              class="bg-black/20 dark:bg-white/10 text-black dark:text-white size-12 flex items-center justify-center backdrop-blur-sm"
             >
               <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
             </a>
@@ -76,13 +78,13 @@ const { data: links, pending } = await useAsyncData(
       </div>
 
       <div class="flex items-end">
-        <div class="mb-16 px-16">
+        <div class="mb-16 px-5 sm:px-16">
           <UPageGrid
-            v-if="links"
-            class="de:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-2"
+            v-if="stacks"
+            class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-2"
           >
             <UPageCard
-              v-for="link in links.slice(0, 2)"
+              v-for="link in stacks.slice(0, 1)"
               :key="link.to"
               :ui="{
                 leadingIcon: 'size-16 text-neutral',
@@ -116,6 +118,12 @@ const { data: links, pending } = await useAsyncData(
       </div>
     </u-page-grid>
   </div>
+
+  <u-container class="py-5">
+    <p class="mt-5 font-geist-mono text-[18px] block lg:hidden">
+      {{ $t("page.index.description") }}
+    </p>
+  </u-container>
 </template>
 
 <style lang="scss">

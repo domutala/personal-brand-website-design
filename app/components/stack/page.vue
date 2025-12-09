@@ -66,11 +66,11 @@ const stack = computed(() => {
 
 <template>
   <div v-if="pending">loading...</div>
-  <u-container
+  <div
     v-else-if="page?.content"
-    class="py-16 max-w-[1150px] font-geist-mono"
+    class="pb-16 pt-0 max-w-[1150px] font-geist-mono mx-auto"
   >
-    <div class="p-10 light:bg-black/5 dark:bg-white/5">
+    <div class="p-10 mt-14 light:bg-black/5 dark:bg-white/5">
       <template v-if="stack">
         <div class="mb-5">
           <div class="flex items-center gap-3 mb-2">
@@ -85,7 +85,7 @@ const stack = computed(() => {
         <u-icon :name="page.content.meta.icon" size="68" />
       </div>
 
-      <div class="text-[38px] leading-tight">
+      <div class="text-2xl sm:text-[38px] leading-tight">
         {{ page.content.title }}
       </div>
 
@@ -111,21 +111,24 @@ const stack = computed(() => {
       <ContentRenderer :value="page.content" />
     </div>
 
-    <UPageGrid class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! mt-5">
-      <UPageCard
-        v-for="link in page.links"
-        :key="link.to"
-        :ui="{ leadingIcon: 'size-16 text-neutral', title: 'mt-5 text-xl' }"
-        v-bind="link"
-        spotlight
-        spotlight-color="neutral"
-      >
-        <template #header>
-          <div class="absolute top-5 right-5">
-            <u-icon name="i-lucide-arrow-up-right" />
-          </div>
-        </template>
-      </UPageCard>
-    </UPageGrid>
-  </u-container>
+    <div class="px-8">
+      <UPageGrid class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-4">
+        <UPageCard
+          v-for="link in page.links"
+          :key="link.to"
+          :ui="{ leadingIcon: 'size-16 text-neutral', title: 'mt-5 text-xl' }"
+          v-bind="link"
+          spotlight
+          spotlight-color="neutral"
+          class="rounded-none!"
+        >
+          <template #header>
+            <div class="absolute top-5 right-5">
+              <u-icon name="i-lucide-arrow-up-right" />
+            </div>
+          </template>
+        </UPageCard>
+      </UPageGrid>
+    </div>
+  </div>
 </template>
