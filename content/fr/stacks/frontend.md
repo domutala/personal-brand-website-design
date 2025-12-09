@@ -4,6 +4,7 @@ title: Comment je transforme Vue.js et Nuxt en interfaces rapides et fiables
 mainStack: nuxt
 subStacks: [vue, pinia, vuetify, tailwindcss]
 links: [backend, devops, cicd-and-tests]
+order: 1
 ---
 
 **Vue.js est le moteur principal de mes développements front-end**. Sa flexibilité et sa puissance me permettent de transformer des idées complexes en interfaces intuitives, performantes et faciles à maintenir.  

@@ -4,6 +4,7 @@ title: "Automatiser, Tester et Livrer avec Excellence : CI/CD et Testing"
 subStacks: [github, gitlab, jenkins, docker, cypress, vitest, jest]
 links: [frontend, backend, devops]
 icon: i-lucide-folder-git-2
+order: 2
 ---
 
 **La qualité d’un projet ne se mesure pas seulement à son code, mais à sa fiabilité et sa capacité à évoluer sans faille.**  

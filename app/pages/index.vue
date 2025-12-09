@@ -9,8 +9,11 @@ const { data: stacks } = await useAsyncData(
       .where(
         "path",
         "IN",
-        ["frontend"].map((slug) => `/${locale.value}/stacks/${slug}`),
+        ["frontend", "backend", "devops", "cicd-and-tests"].map(
+          (slug) => `/${locale.value}/stacks/${slug}`,
+        ),
       )
+      .order("meta", "DESC")
       .all();
   },
   {
@@ -141,6 +144,27 @@ const { data: stacks } = await useAsyncData(
     <p class="mt-5 font-geist-mono text-[18px] block xl:hidden">
       {{ $t("page.index.description") }}
     </p>
+
+    <div class="mt-10">
+      <u-page-grid class="gap-2">
+        <UPageCard
+          v-for="link in stacks?.slice(0)"
+          :key="link.to"
+          :ui="{
+            leadingIcon: 'size-16 text-neutral',
+            title: 'mt-5 text-xl',
+          }"
+          v-bind="link"
+          class="rounded-none backdrop-blur-sm"
+        >
+          <template #header>
+            <div class="absolute top-5 right-5">
+              <u-icon name="i-lucide-arrow-up-right" />
+            </div>
+          </template>
+        </UPageCard>
+      </u-page-grid>
+    </div>
   </u-container>
 </template>
 
