@@ -167,9 +167,12 @@ const { data: stacks } = await useAsyncData(
       </u-page-grid>
     </div>
 
-    <p class="mt-10 font-geist-mono text-[18px] block xl:hidden">
-      {{ $t("page.index.description") }}
-    </p>
+    <div class="mt-10 font-geist-mono text-[18px] block xl:hidden">
+      <h2 class="text-3xl mb-2">About me</h2>
+      <p>
+        {{ $t("page.index.description") }}
+      </p>
+    </div>
   </u-container>
 </template>
 
