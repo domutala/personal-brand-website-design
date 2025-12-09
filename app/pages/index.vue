@@ -49,7 +49,7 @@ const { data: stacks } = await useAsyncData(
 
 <template>
   <div
-    class="md:hidden flex items-end justify-center relative bg-black/10 dark:bg-white/5 h-[400px] md:h-[520px]"
+    class="hidden items-end justify-center relative bg-black/10 dark:bg-white/5 h-[400px] md:h-[520px]"
   >
     <img
       :src="'/images/003.png'"
@@ -75,11 +75,11 @@ const { data: stacks } = await useAsyncData(
   <div
     class="hidden md:flex flex-col items-center justify-center relative bg-black/10"
   >
-    <img
+    <!-- <img
       :src="'/images/003.png'"
       :alt="appConfig.site.name"
       class="w-auto h-full transition-all max-h-[80%] object-cover object-top absolute bottom-0"
-    />
+    /> -->
 
     <u-page-grid
       class="relative max-w-[1900px] md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 min-h-screen w-full mx-auto"
@@ -114,16 +114,18 @@ const { data: stacks } = await useAsyncData(
             class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-2"
           >
             <UPageCard
-              v-for="link in stacks.filter((s) => s.slug === 'frontend')"
+              v-for="link in stacks
+                .filter((s) => ['frontend', 'cicd-and-tests'].includes(s.slug))
+                .slice(0, 2)"
               :key="link.to"
               :ui="{
                 leadingIcon: 'size-16 text-neutral',
                 title: 'mt-5 text-xl',
               }"
               v-bind="link"
-              spotlight
               spotlight-color="neutral"
               class="rounded-none backdrop-blur-sm"
+              variant="soft"
             >
               <template #header>
                 <div class="absolute top-5 right-5">
@@ -138,9 +140,7 @@ const { data: stacks } = await useAsyncData(
   </div>
 
   <u-container class="py-5">
-    <h1
-      class="text-xl sm:text-4xl lg:text-5xl font-bold font-geist-mono block sm:hidden"
-    >
+    <h1 class="text-3xl font-bold font-geist-mono block sm:hidden mt-16">
       {{ $t("page.index.title") }}
     </h1>
 
