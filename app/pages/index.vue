@@ -142,11 +142,7 @@ const { data: stacks } = await useAsyncData(
       {{ $t("page.index.title") }}
     </h1>
 
-    <p class="mt-5 font-geist-mono text-[18px] block xl:hidden">
-      {{ $t("page.index.description") }}
-    </p>
-
-    <div class="mt-10 block sm:hidden">
+    <div class="mt-5 block sm:hidden">
       <u-page-grid class="gap-2 grid-cols-2">
         <UPageCard
           v-for="link in stacks"
@@ -156,6 +152,7 @@ const { data: stacks } = await useAsyncData(
             title: 'text-',
           }"
           orientation="horizontal"
+          variant="soft"
           v-bind="link"
           class="rounded-none backdrop-blur-sm"
         >
@@ -167,6 +164,10 @@ const { data: stacks } = await useAsyncData(
         </UPageCard>
       </u-page-grid>
     </div>
+
+    <p class="mt-10 font-geist-mono text-[18px] block xl:hidden">
+      {{ $t("page.index.description") }}
+    </p>
   </u-container>
 </template>
 
