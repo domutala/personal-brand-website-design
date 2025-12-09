@@ -68,9 +68,9 @@ const stack = computed(() => {
   <div v-if="pending">loading...</div>
   <div
     v-else-if="page?.content"
-    class="pb-16 pt-0 max-w-[1150px] font-geist-mono mx-auto"
+    class="pb-16 pt-0 xl:max-w-[1150px] font-geist-mono mx-auto"
   >
-    <div class="p-10 mt-14 light:bg-black/5 dark:bg-white/5">
+    <div class="p-10 xl:mt-16 pt-16 xl:pt-10 light:bg-black/5 dark:bg-white/5">
       <template v-if="stack">
         <div class="mb-5">
           <div class="flex items-center gap-3 mb-2">

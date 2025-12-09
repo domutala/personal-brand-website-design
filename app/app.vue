@@ -48,8 +48,9 @@ onMounted(() => {
       </template>
     </u-header> -->
 
+    <ui-header />
     <UMain>
-      <ui-menu />
+      <!-- <ui-menu /> -->
       <NuxtPage />
     </UMain>
 
