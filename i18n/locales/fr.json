@@ -1,5 +1,5 @@
 {
-  "profile": "Senior Frontend Developer - Vue.js/Nuxt.js Specialist",
+  "profile": "Senior Frontend Developer, Vue.js/Nuxt.js Specialist",
 
   "cookies": {
     "text": "Pour vous offrir une expérience optimale, nous utilisons des cookies. Ils nous aident à personnaliser le contenu et à comprendre comment vous utilisez le site.",
@@ -63,5 +63,9 @@
         "title": "Si JavaScript était une personne, tu sortirais avec ou tu ghost direct ? 😂"
       }
     ]
+  },
+
+  "words": {
+    "on_this_page": "Sur cette page"
   }
 }

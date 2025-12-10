@@ -5,6 +5,11 @@ const appConfig = useAppConfig();
 </script>
 
 <template>
+  <USeparator
+    :icon="$route.path === '/' ? undefined : 'i-simple-icons-nuxtdotjs'"
+    class="h-px"
+  />
+
   <UFooter>
     <template #left>
       <p class="text-muted text-sm">© {{ new Date().getFullYear() }}</p>

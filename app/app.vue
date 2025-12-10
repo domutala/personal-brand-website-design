@@ -28,31 +28,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <NuxtLoadingIndicator :height="5" color="#000" />
   <UApp>
-    <!-- <u-header
-      v-if="$route.path !== '/'"
-      class="border-b-0"
-      :class="{ 'bg-transparent': $route.path === '/' }"
-    >
-      <template #title> @domutala </template>
-
-      <template #right>
-        <UColorModeSelect />
-
-        <ULocaleSelect
-          :model-value="locale"
-          :locales="[en, fr]"
-          @update:model-value="setLocale($event as 'fr')"
-        />
-      </template>
-    </u-header> -->
+    <NuxtLoadingIndicator color="var(--ui-primary)" :height="5" />
 
     <ui-header />
-    <UMain>
-      <!-- <ui-menu /> -->
+
+    <NuxtLayout>
       <NuxtPage />
-    </UMain>
+    </NuxtLayout>
 
     <ui-footer />
   </UApp>

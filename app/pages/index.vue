@@ -1,7 +1,12 @@
 <script lang="ts" setup>
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+
 const appConfig = useAppConfig();
 const localePath = useLocalePath();
 const { locale } = useI18n();
+
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const lgAndSmaller = breakpoints.smallerOrEqual("lg");
 
 const { data: stacks } = await useAsyncData(
   () => {
@@ -48,114 +53,104 @@ const { data: stacks } = await useAsyncData(
 </script>
 
 <template>
-  <div
-    class="flex md:hidden items-end justify-center relative bg-black/10 dark:bg-white/5 h-[400px] md:h-[520px]"
-  >
-    <img
-      :src="'/images/003.png'"
-      :alt="appConfig.site.name"
-      class="w-full h-full transition-all max-h-[85%] object-cover object-top absolute bottom-0"
-    />
-
-    <div
-      class="hidden items-center justify-between gap-2 backdrop-blur-sm w-full bg-black/10 dark:bg-white/10"
-    >
-      <a
-        v-for="(social, s) in appConfig.socials"
-        :key="s"
-        :href="social"
-        target="_blank"
-        class="text-black dark:text-white h-12 w-full flex items-center justify-center"
+  <div>
+    <!-- -->
+    <div class="-mt-(--ui-header-height)">
+      <div
+        class="bg-black/10 dark:bg-white/10 min-h-screen flex flex-col relative"
       >
-        <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
-      </a>
-    </div>
-  </div>
+        <img
+          :src="'/images/003.png'"
+          :alt="appConfig.site.name"
+          class="w-auto h-full transition-all max-h-[85%] object-cover object-top absolute bottom-0 left-[50%] translate-x-[-50%]"
+        />
 
-  <div
-    class="hidden md:flex flex-col items-center justify-center relative bg-black/8"
-  >
-    <img
-      :src="'/images/003.png'"
-      :alt="appConfig.site.name"
-      class="w-auto h-full transition-all max-h-[80%] object-cover object-top absolute bottom-0"
-    />
+        <div class="mt-(--ui-header-height) relative">
+          <div class="w-full md:w-[70%] lg:w-[50%] xl:w-[40%] hidden sm:block">
+            <div class="p-5">
+              <h1 class="text-2xl md:text-3xl font-bold font-geist-mono">
+                {{ $t("page.index.title") }}
+              </h1>
+              <p class="mt-5 font-geist-mono text-[18px] hidden xl:block">
+                {{ $t("page.index.description") }}
+              </p>
 
-    <u-page-grid
-      class="relative max-w-[1900px] md:grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 min-h-screen w-full mx-auto"
-    >
-      <div>
-        <div class="mt-16 sm:mt-32 px-5 sm:px-16 mr-0 sm:mr-16">
-          <h1 class="text-xl sm:text-4xl lg:text-5xl font-bold font-geist-mono">
-            {{ $t("page.index.title") }}
-          </h1>
-          <p class="mt-5 font-geist-mono text-[18px] hidden xl:block">
-            {{ $t("page.index.description") }}
-          </p>
+              <div class="hidden xl:flex items-center gap-2 mt-16">
+                <a
+                  v-for="(social, s) in appConfig.socials"
+                  :key="s"
+                  :href="social"
+                  target="_blank"
+                  class="bg-black/5 dark:bg-white/5 text-black dark:text-white size-12 flex items-center justify-center backdrop-blur-sm"
+                >
+                  <u-icon
+                    :name="`i-simple-icons-${s.split('.')[1]}`"
+                    size="24"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <div class="flex items-center gap-2 mt-2">
-            <a
-              v-for="(social, s) in appConfig.socials"
-              :key="s"
-              :href="social"
-              target="_blank"
-              class="bg-black/10 dark:bg-white/10 text-black dark:text-white size-12 flex items-center justify-center backdrop-blur-sm"
-            >
-              <u-icon :name="`i-simple-icons-${s.split('.')[1]}`" size="24" />
-            </a>
+        <div class="mt-auto w-full">
+          <div class="w-full xl:w-[50%] lg:w-[75%] ml-auto">
+            <div class="hidden sm:block">
+              <UPageGrid
+                v-if="stacks"
+                class="sm:grid-cols-1 lg:grid-cols-2 gap-1 mx-3 sm:mx-10 mb-10"
+              >
+                <UPageCard
+                  v-for="link in stacks
+                    .filter((s) =>
+                      ['frontend', 'cicd-and-tests'].includes(s.slug),
+                    )
+                    .slice(0, 2)"
+                  :key="link.to"
+                  :ui="{
+                    leadingIcon: 'size-16 text-neutral',
+                    title: 'mt-5 text-xl',
+                  }"
+                  v-bind="link"
+                  class="rounded-none backdrop-blur-sm"
+                  variant="soft"
+                >
+                  <template #header>
+                    <div class="absolute top-5 right-5">
+                      <u-icon name="i-lucide-arrow-up-right" />
+                    </div>
+                  </template>
+                </UPageCard>
+              </UPageGrid>
+            </div>
+
+            <div class="block sm:hidden relative p-5 backdrop-blur-xl">
+              <h1 class="text-3xl text-black">
+                {{ $t("page.index.title") }}
+              </h1>
+
+              <div class="flex items-center justify- gap-3 mt-5">
+                <a
+                  v-for="(social, s) in appConfig.socials"
+                  :key="s"
+                  :href="social"
+                  target="_blank"
+                  class="text-black flex items-center justify-center"
+                >
+                  <u-icon
+                    :name="`i-simple-icons-${s.split('.')[1]}`"
+                    size="24"
+                  />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="flex flex-col items-end">
-        <!-- <img
-          :src="'/images/004.png'"
-          :alt="appConfig.site.name"
-          class="size-18 object-cover object-top rounded-full mt-32 mb-auto ml-auto bg-black/10 dark:bg-white/10 mx-20"
-        /> -->
-
-        <div class="mb-16 px-5 sm:px-16 mt-auto">
-          <UPageGrid
-            v-if="stacks"
-            class="sm:grid-cols-1! lg:grid-cols-2! xl:grid-cols-2! gap-2"
-          >
-            <UPageCard
-              v-for="link in stacks
-                .filter((s) => ['frontend', 'cicd-and-tests'].includes(s.slug))
-                .slice(0, 2)"
-              :key="link.to"
-              :ui="{
-                leadingIcon: 'size-16 text-neutral',
-                title: 'mt-5 text-xl',
-              }"
-              v-bind="link"
-              spotlight-color="neutral"
-              class="rounded-none backdrop-blur-sm"
-              variant="soft"
-            >
-              <template #header>
-                <div class="absolute top-5 right-5">
-                  <u-icon name="i-lucide-arrow-up-right" />
-                </div>
-              </template>
-            </UPageCard>
-          </UPageGrid>
-        </div>
-      </div>
-    </u-page-grid>
+    </div>
   </div>
 
   <u-container class="py-5">
-    <!-- <img
-      :src="'/images/004.png'"
-      :alt="appConfig.site.name"
-      class="size-12 object-cover object-top rounded-full mt-16 mb-5 bg-black/10 dark:bg-white/10 block sm:hidden"
-    /> -->
-
-    <h1 class="text-3xl font-bold font-geist-mono block md:hidden">
-      {{ $t("page.index.title") }}
-    </h1>
-
     <div class="mt-5 block md:hidden">
       <u-page-grid class="gap-2 grid-cols-2">
         <UPageCard
@@ -187,31 +182,3 @@ const { data: stacks } = await useAsyncData(
     </div>
   </u-container>
 </template>
-
-<style lang="scss">
-.oblique-box {
-  width: 250px;
-  background: currentColor;
-  position: relative;
-}
-
-.oblique-box::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 250px solid transparent;
-  border-bottom: 40px solid currentColor;
-}
-
-.u-header {
-  .brand {
-    @media (width >= 80rem) {
-      writing-mode: vertical-rl;
-      rotate: 180deg;
-    }
-  }
-}
-</style>

@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
+import { useWindowScroll } from "@vueuse/core";
+
+const { y } = useWindowScroll();
 const localePath = useLocalePath();
 const { locale } = useI18n();
 
@@ -108,6 +111,26 @@ const items = ref<NavigationMenuItem[][]>([
 
 <template>
   <UHeader
+    class="bg-transparent"
+    :class="{ 'border-b-0': $route.path === '/' && y === 0 }"
+  >
+    <template #title>
+      <div class="flex items-center gap-2">
+        <img
+          :src="'/images/004.png'"
+          class="size-8 object-cover object-top rounded-full mb-auto ml-auto bg-black/10 dark:bg-white/10"
+        />
+
+        <div>Mamadou</div>
+      </div>
+    </template>
+
+    <template #right>
+      <UColorModeButton />
+    </template>
+  </UHeader>
+
+  <!-- <UHeader
     class="fixed w-full bg-transparent border-b-0"
     mode="slideover"
     :ui="{ container: 'max-w-full!' }"
@@ -130,5 +153,5 @@ const items = ref<NavigationMenuItem[][]>([
     <template #body>
       <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
     </template>
-  </UHeader>
+  </UHeader> -->
 </template>
